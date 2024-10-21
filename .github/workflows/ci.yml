@@ -3,10 +3,10 @@ name: Testes com Mocha
 on:
   push:
     branches:
-      - main  # Ou a branch que você deseja
+      - main
   pull_request:
     branches:
-      - main  # Ou a branch que você deseja
+      - main
 
 jobs:
   test:
@@ -14,15 +14,23 @@ jobs:
 
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v3  # Atualizado para a versão v3
+        uses: actions/checkout@v3
 
       - name: Configurar Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Ou a versão desejada do Node.js
+          node-version: '20'
 
       - name: Instalar dependências
         run: npm install
+
+      - name: Verificar versões do Node.js e npm
+        run: |
+          node --version
+          npm --version
+
+      - name: Listar arquivos do diretório
+        run: ls -la
 
       - name: Rodar os testes
         run: npm test
