@@ -3,21 +3,26 @@ name: Testes com Mocha
 on:
   push:
     branches:
-      - main
+      - main  # Ou a branch que você deseja
   pull_request:
     branches:
-      - main
+      - main  # Ou a branch que você deseja
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout do código
-      uses: actions/checkout@v2
+      - name: Checkout do código
+        uses: actions/checkout@v3  # Atualizado para a versão v3
 
-    - name: Instalar dependências
-      run: npm install
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Ou a versão desejada do Node.js
 
-    - name: Rodar os testes
-      run: npm test
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Rodar os testes
+        run: npm test
