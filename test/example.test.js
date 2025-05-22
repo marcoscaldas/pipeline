@@ -6,3 +6,4 @@ describe('Exemplo de Teste', function() {
     assert.strictEqual(1 + 12, 13);
   });
 });
+//comentario novo
